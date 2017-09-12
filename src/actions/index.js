@@ -9,7 +9,12 @@ export function fetchWeather(city){
   const url = `${ROOT_URL}&q=${city},us`;
 
   const request = axios.get(url);
+  console.log("Request", request);
 
+  //request will return promises and this is passed in paylload
+  //so from action creator these promises take time to load so it dun create mess
+  //middleware are used that hold ons action creator till promises are resolved
+  //after that are passed on to reducers.
   return {
     type: FETCH_WEATHER,
     payload: request
